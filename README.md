@@ -27,34 +27,31 @@ gulp.src('app/**/*.html')
 Given this directory structure...
 ```
 app
-  |_nested-folder-1
-    |_nested-folder-1-1
-      |_index.html
-    |_faq.html
-    |_index.html
-  |_nested-folder-2
-    |_nested-folder-2-1
-      |_index.txt
-    |_index.html
+  |_bundle.js
   |_index.html
-  |_index.txt
+  |_vendor.bundle.js
+  |_version.json
 ```
 
 ... this JSON object would be written to `dist/urls.json`:
 
 ```json
 {
-  "index.html": "index.html",
-  "nested-folder-1": {
-    "faq.html": "nested-folder-1/faq.html",
-    "index.html": "nested-folder-1/index.html",
-    "nested-folder-1-1": {
-      "index.html": "nested-folder-1/nested-folder-1-1/index.html"
+  "timestamp":1435583692,
+  "files":[
+    {
+      "name":"ae887de183bbb7867b7033d2ff04bc9b.db","position":0
+    },
+    {
+      "name":"bundle.js","position":0
+    },
+    {
+      "name":"index.html","position":0
+    },
+    {
+      "name":"vendor.bundle.js","position":0
     }
-  },
-  "nested-folder-2": {
-    "index.html": "nested-folder-2/index.html"
-  }
+  ]
 }
 ```
 

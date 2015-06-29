@@ -9,14 +9,17 @@ module.exports = function (config) {
 	config = config || {};
 	var origin = config.filename || "urls.json",
 			firstFile,
-			directoryStructure = {};
+			directoryStructure = {},
+			files = [],
+			output = {};
+	var timestamp = Date.now() / 1000 | 0;
 
 	function directoryMap(file, enc, callback) {
 		/*jshint validthis:true*/
 
 		if (!firstFile) {
-      firstFile = file;
-    }
+	      firstFile = file;
+	    }
 
 		// Do nothing if no contents
 		if (file.isNull()) {
@@ -44,8 +47,13 @@ module.exports = function (config) {
 				} else {
 					parent[seg] = parent[seg] || {};
 				}
-				parent = parent[seg];
+
+				files.push({'name':seg, position: 0});
 			});
+		}
+		output = {
+				"timestamp": timestamp,
+				files: files
 		}
 		return callback();
 	}
@@ -63,7 +71,7 @@ module.exports = function (config) {
 				cwd: firstFile.cwd,
 				base: firstFile.cwd,
 				path: path.join(firstFile.cwd, origin),
-				contents: new Buffer(JSON.stringify(directoryStructure))
+				contents: new Buffer(JSON.stringify(output))
 			}));
 
 			gutil.log("Generated", gutil.colors.blue(config.filename));
