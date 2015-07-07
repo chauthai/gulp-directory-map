@@ -8,7 +8,7 @@
 First, install `gulp-directory-map` as a development dependency:
 
 ```shell
-npm install --save-dev gulp-directory-map
+npm install --save-dev npm install --save-dev git+ssh://git@mxgit.mobilex.intra/thai/gulp-directory-map
 ```
 
 Then, add it to your `gulpfile.js`:
