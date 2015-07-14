@@ -1,7 +1,8 @@
 var through = require("through2"),
 		isEmpty  = require("lodash.isempty"),
 		path = require("path"),
-		gutil = require("gulp-util");
+		gutil = require("gulp-util"),
+		pjson = require('../../package.json');
 
 module.exports = function (config) {
 	"use strict";
@@ -13,6 +14,7 @@ module.exports = function (config) {
 			files = [],
 			output = {};
 	var timestamp = Date.now() / 1000 | 0;
+	var version = pjson.version;
 
 	function directoryMap(file, enc, callback) {
 		/*jshint validthis:true*/
@@ -53,6 +55,7 @@ module.exports = function (config) {
 		}
 		output = {
 				"timestamp": timestamp,
+				"version": version,
 				files: files
 		}
 		return callback();
