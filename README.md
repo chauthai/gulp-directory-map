@@ -38,6 +38,7 @@ app
 ```json
 {
   "timestamp":1435583692,
+  "version":"0.0.3"
   "files":[
     {
       "name":"ae887de183bbb7867b7033d2ff04bc9b.db","position":0
@@ -54,6 +55,7 @@ app
   ]
 }
 ```
+The version number is read out from the version key in the package.json file.
 
 This is useful for mapping out a directory structure after passing files through a pre-processor, generating data to create navigation during build, and more. Have fun!
 
